@@ -1,9 +1,13 @@
 
-from variables import data_url
 
-## import libraries
+
+## Import the libraries
+from variables import data_url
+from next_draw_functions import time_until_next_draw
+
 import pandas as pd
 import streamlit as st
+
 
 # Initial page setup
 st.set_page_config(page_icon= '🎲',
@@ -26,7 +30,10 @@ with col2:
     st.title("KENO Lottery Number Analysis")
 
 with st.sidebar:
-    st.image('images/daily-keno.png', width=150)
+    st.image('images/ca-keno-2x-png.png', width=150)
+    next_draw_date_1, count_down_1 = time_until_next_draw(df)
+    st.write(next_draw_date_1, unsafe_allow_html=True)
+    st.write(count_down_1, unsafe_allow_html=True)
 
 
 st.dataframe(df)
@@ -35,7 +42,7 @@ st.dataframe(df)
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('Program Running')
-    print(data_url)
+
 
 
 
