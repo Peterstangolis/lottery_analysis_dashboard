@@ -31,9 +31,15 @@ with col2:
 
 with st.sidebar:
     st.image('images/ca-keno-2x-png.png', width=150)
-    next_draw_date_1, count_down_1 = time_until_next_draw(df)
+    col4, col5, col6 = st.columns((.5, 3, .5), gap='small')
+    col4 = st.write(" ")
+    col5 = st.write("NEXT DRAW")
+    next_draw_date_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
     st.write(next_draw_date_1, unsafe_allow_html=True)
     st.write(count_down_1, unsafe_allow_html=True)
+    st.write("<hr>", unsafe_allow_html=True)
+    st.write("LAST DRAW", unsafe_allow_html=True)
+    st.write(last_draw_date_1)
 
 
 st.dataframe(df)

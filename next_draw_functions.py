@@ -19,19 +19,20 @@ def upcoming_draw_date(df):
     if midd_even == "Evening":
         next_draw_time = "Midday"
         next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00)
-        return next_draw_date_time, next_draw_time
+        last_draw_date = dt.datetime(year, month, day)
+        return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
         next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00)
-        return next_draw_date_time, next_draw_time
+        last_draw_date = dt.datetime(year, month, day)
+        return next_draw_date_time, next_draw_time, last_draw_date, midd_even
 
 
 def time_until_next_draw(df):
 
     import datetime as dt
-    import pandas as pd
 
-    upcoming_draw, midday_or_evening = upcoming_draw_date(df)
+    upcoming_draw, midday_or_evening, last_draw_date, midday_or_evening_last = upcoming_draw_date(df)
     # print(upcoming_draw, midday_or_evening)
 
     time_until_keno_draw = upcoming_draw - dt.datetime.now()
@@ -43,4 +44,9 @@ def time_until_next_draw(df):
     next_draw_date = f"{upcoming_draw.strftime('%A')} | {upcoming_draw.strftime('%#d %b %Y')} | {midday_or_evening}"
     countdown_to_draw = f"{hours_to_draw}h : {minutes_to_draw}m :{seconds_to_draw}"
 
-    return next_draw_date, countdown_to_draw
+    last_draw_date_format = f"{last_draw_date.strftime('%A')} | {last_draw_date.strftime('%#d %b %Y')} | {midday_or_evening_last}"
+
+    return next_draw_date, countdown_to_draw, last_draw_date_format
+
+# Return the last draws numbers
+def last_drawn_numbers(df):
