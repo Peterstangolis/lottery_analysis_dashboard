@@ -55,3 +55,29 @@ def last_drawn_numbers(df, col_name):
 
     return last_drawn_numbers
 
+def odds_and_evens(df, col_name):
+
+    odds_and_evens = df.iloc[len(df) - 1][col_name]
+
+    split_1 = odds_and_evens.split(",")
+
+    odds_evens_list = []
+    for item in split_1:
+        n = item.split(":")[1].replace("}", "")
+        odds_evens_list.append(n)
+    return odds_evens_list
+
+
+def over_under_35(df, col_name):
+
+    over_under = df.iloc[len(df)-1][col_name]
+
+    split_1 = over_under.split(",")
+    over_under_list = []
+    for item in split_1:
+        n = item.split(":")[1].replace("}", "")
+        over_under_list.append(n)
+
+    return over_under_list
+
+
