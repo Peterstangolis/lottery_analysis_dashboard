@@ -3,7 +3,7 @@
 
 ## Import the libraries
 from variables import data_url
-from next_draw_functions import time_until_next_draw
+from next_draw_functions import time_until_next_draw, last_drawn_numbers
 
 import pandas as pd
 import streamlit as st
@@ -40,7 +40,8 @@ with st.sidebar:
     st.write("<hr>", unsafe_allow_html=True)
     st.write("LAST DRAW", unsafe_allow_html=True)
     st.write(last_draw_date_1)
-
+    last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
+    st.write(last_numbers)
 
 st.dataframe(df)
 

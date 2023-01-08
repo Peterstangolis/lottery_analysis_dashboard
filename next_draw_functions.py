@@ -49,4 +49,9 @@ def time_until_next_draw(df):
     return next_draw_date, countdown_to_draw, last_draw_date_format
 
 # Return the last draws numbers
-def last_drawn_numbers(df):
+def last_drawn_numbers(df, col_name):
+
+    last_drawn_numbers = df.iloc[len(df)-1][col_name]
+
+    return last_drawn_numbers
+
