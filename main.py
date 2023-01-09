@@ -36,13 +36,13 @@ df2 = df[['Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeate
     #     'Consecutive_Numbers', "Over_Under_35", "Tens_Category", "Sum_of_picks"]]
 
 
-col1, col2, col3, col4 = st.columns((1,1,1,3), gap="medium")
+st.metric(label="TOTAL GAMES",
+          value=len(df))
+
+col1, col2, col3 = st.columns((1,1,4), gap="medium")
+
 
 with col1:
-    st.metric(label="TOTAL GAMES",
-              value=len(df))
-
-with col2:
     #st.image('images/number-blocks.png', width=50)
 
     o_e = odds_and_evens(df, "Odds_vs_Evens")
@@ -52,7 +52,7 @@ with col2:
     st.metric(label="EVEN #'s",
               value=f'{o_e[1]}')
 
-with col3:
+with col2:
 
     over_under = over_under_35(df=df, col_name="Over_Under_35")
     st.metric(label="1-34",
@@ -62,13 +62,12 @@ with col3:
               value=f"{over_under[0]}"
               )
 
-with col4:
+with col3:
     df_tens = pd.read_csv(
         "data/tens_breakdown.csv",
         index_col=0
-
     )
-    print(df_tens.columns)
+
     st.line_chart(df_tens)
 
 with st.sidebar:
