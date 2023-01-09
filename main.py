@@ -5,6 +5,7 @@
 from variables import data_url
 from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_and_evens, over_under_35
 from tens_csv import tens_csv
+from tens_chart_matplot import tens_charts
 
 import pandas as pd
 import streamlit as st
@@ -62,12 +63,21 @@ with col2:
               value=f"{over_under[0]}"
               )
 
+# with col3:
+#     df_tens = pd.read_csv(
+#         "data/tens_breakdown_new.csv",
+#         index_col=0
+#     )
+#     st.line_chart(df_tens)
+
 with col3:
     df_tens = pd.read_csv(
         "data/tens_breakdown_new.csv",
-        index_col=0
-    )
-    st.line_chart(df_tens)
+        parse_dates=True,
+        index_col=0)
+    fig = tens_charts(df=df_tens)
+    st.pyplot(fig=fig)
+
 
 with st.sidebar:
     st.image('images/ca-keno-2x-png.png', width=150)
