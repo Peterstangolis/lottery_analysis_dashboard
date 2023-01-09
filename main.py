@@ -4,6 +4,7 @@
 ## Import the libraries
 from variables import data_url
 from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_and_evens, over_under_35
+from tens_csv import tens_csv
 
 import pandas as pd
 import streamlit as st
@@ -24,7 +25,9 @@ def load_data(url):
 
 df = load_data(data_url)
 
-print(df.columns)
+tens_csv(df)
+
+
 df2 = df[['Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeated Numbers', \
           'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
           ]]
@@ -33,7 +36,7 @@ df2 = df[['Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeate
     #     'Consecutive_Numbers', "Over_Under_35", "Tens_Category", "Sum_of_picks"]]
 
 
-col1, col2, col3, col4, col5 = st.columns((1,1,1,1,1), gap="medium")
+col1, col2, col3, col4 = st.columns((1,1,1,3), gap="medium")
 
 with col1:
     st.metric(label="TOTAL GAMES",
@@ -58,6 +61,15 @@ with col3:
     st.metric(label="35-70",
               value=f"{over_under[0]}"
               )
+
+with col4:
+    df_tens = pd.read_csv(
+        "data/tens_breakdown.csv",
+        index_col=0
+
+    )
+    print(df_tens.columns)
+    st.line_chart(df_tens)
 
 with st.sidebar:
     st.image('images/ca-keno-2x-png.png', width=150)
