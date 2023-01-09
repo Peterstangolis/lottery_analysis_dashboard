@@ -64,10 +64,10 @@ with col2:
 
 with col3:
     df_tens = pd.read_csv(
-        "data/tens_breakdown.csv",
+        "data/tens_breakdown_new.csv",
         index_col=0
     )
-
+    print(df_tens.tail())
     st.line_chart(df_tens)
 
 with st.sidebar:
