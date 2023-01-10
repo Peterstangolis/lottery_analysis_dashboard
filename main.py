@@ -67,9 +67,12 @@ if check_password():
     #Numbers_2", "Odds_vs_Evens", "Repeated Numbers", "Two_Game_Number_Comparison",\
         #     'Consecutive_Numbers', "Over_Under_35", "Tens_Category", "Sum_of_picks"]]
 
+    title = f"<h4 style = 'font-size:45px; color:#02A161; FONT-FAMILY:liberation serif;'> KENO GAME STATS OVER THE LAST <mark style = 'font-family:liberation serif; font-size:41px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h4>"
 
-    st.metric(label="LAST GAMES",
-              value=len(df))
+    st.markdown(f"{title}", unsafe_allow_html=True)
+
+    # st.metric(label="LAST GAMES",
+    #           value=len(df))
 
     col1, col2, col3 = st.columns((1,1,4), gap="medium")
 
@@ -110,12 +113,20 @@ if check_password():
         st.image('images/ca-keno-2x-png.png', width=150)
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
         col6 = st.write(" ")
-        col7 = st.write("NEXT DRAW")
+        col7 = st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  NEXT DRAW </h3>",
+                           unsafe_allow_html=True)
+
+
         next_draw_date_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
         st.write(next_draw_date_1, unsafe_allow_html=True)
-        st.write(count_down_1, unsafe_allow_html=True)
+        col_a, col_b = st.columns((.5,2))
+        with col_a:
+            st.image("images/time.png", width=40)
+        with col_b:
+            st.write(f'{count_down_1}' , unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
-        st.write("LAST DRAW", unsafe_allow_html=True)
+        st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h3>",
+                           unsafe_allow_html=True)
         st.write(last_draw_date_1)
         last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
         st.write(last_numbers)

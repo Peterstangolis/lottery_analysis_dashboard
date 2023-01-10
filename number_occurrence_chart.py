@@ -28,7 +28,7 @@ def keno_number_count(df):
 
     ax.scatter(df_sorted["SELECTED TOTAL"], my_range,
                # color='skyblue',
-               c=df_sorted["SELECTED TOTAL"], cmap='autumn_r',
+               c=df_sorted["SELECTED TOTAL"], cmap='summer_r',
                alpha=1, label='value1',
                s=100, edgecolor='k')
 
