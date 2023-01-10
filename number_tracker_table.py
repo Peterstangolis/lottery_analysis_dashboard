@@ -77,7 +77,7 @@ def number_track_table(df):
 
     fig.update_layout(
         autosize=True,
-        width=1500,
-        height=1650)
+        width=1400,
+        height=1700)
 
     return fig
