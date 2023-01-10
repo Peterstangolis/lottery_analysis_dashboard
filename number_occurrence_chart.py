@@ -11,8 +11,10 @@ def keno_number_count(df):
     fig, ax = plt.subplots(figsize=(4, 12),
                            facecolor='lightyellow',
                            linewidth = 5,
-                           edgecolor='darkgreen'
+                           edgecolor='darkgreen',
+                           constrained_layout=True,
                            )
+    fig.suptitle("A Running Count Of How Often Each \nKeno # Has Been Picked")
 
     plt.tick_params(
         axis='x',  # changes apply to the x-axis
@@ -31,7 +33,7 @@ def keno_number_count(df):
                s=100, edgecolor='k')
 
     for line in range(0, df_sorted.shape[0]):
-        plt.text(df_sorted['SELECTED TOTAL'][line] + 0.3, my_range[(70 - line - 1)],
+        plt.text(df_sorted['SELECTED TOTAL'][line] + 0.6, my_range[(70 - line - 1)],
                  df_sorted["SELECTED TOTAL"][line],
                  horizontalalignment='left', size='medium', color='black', weight='semibold',
                  verticalalignment='center')

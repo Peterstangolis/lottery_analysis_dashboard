@@ -118,12 +118,8 @@ if check_password():
         last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
         st.write(last_numbers)
 
-    with st.expander(label="VIEW TABLE OF PREVIOUS DRAW STATS"):
-        st.dataframe(df2)
 
     col9, col10 = st.columns((1,3), gap="medium")
-
-
     with col9:
         colnames = ['KENO NUMBERS', 'SELECTED TOTAL']
         df5 = pd.read_csv(numbers_url,
@@ -140,6 +136,10 @@ if check_password():
             index_col=0)
         fig = tens_charts(df=df_tens)
         st.pyplot(fig=fig)
+
+        st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
+        with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
+            st.dataframe(df2)
 
 
 
