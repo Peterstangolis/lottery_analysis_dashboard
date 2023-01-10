@@ -51,9 +51,31 @@ def time_until_next_draw(df):
 # Return the last draws numbers
 def last_drawn_numbers(df, col_name):
 
-    last_drawn_numbers = df.iloc[len(df)-1][col_name]
+    last_row = df.iloc[len(df)-1][col_name]
 
-    return last_drawn_numbers
+    return last_row
+
+def last_three_draws(df, col_name):
+
+    last_three_rows = df.tail(3)[col_name].values
+    v = last_three_rows
+    values = []
+    for l in v:
+        new_l = l.replace("[", "").replace("]","").split(",")
+        for item in new_l:
+            values.append(item)
+    number_count = dict()
+    for n in values:
+        if n in number_count.keys():
+            number_count[n] += 1
+        else:
+            number_count[n] = 1
+    repeated_three = []
+    for key, value in number_count.items():
+        if value > 2:
+            repeated_three.append(key.strip())
+
+    return repeated_three
 
 def odds_and_evens(df, col_name):
 

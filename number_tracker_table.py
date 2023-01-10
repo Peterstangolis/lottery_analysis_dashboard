@@ -33,7 +33,9 @@ def number_track_table(df):
         col = '<b>' + col + '</b>'
         cols_2.append(col)
 
-    colors = ['#EBC410', '#6A8E02']
+    golden_color = '#A17512'
+    more_yellow = '#EBC410'
+    colors = [golden_color, '#02A161']
 
     header_color = '#F0E29F'
 
@@ -53,7 +55,7 @@ def number_track_table(df):
                     cols_2[6], cols_2[7], cols_2[8], cols_2[9], cols_2[10], cols_2[11],
                     cols_2[12], cols_2[13], cols_2[14], cols_2[15], cols_2[16], cols_2[17],
                     cols_2[18], cols_2[19]],
-            line_color='white', fill_color='royalblue',
+            line_color='white', fill_color='#06136B',
             align='center',
             font=dict(color='white', size=12)
         ),

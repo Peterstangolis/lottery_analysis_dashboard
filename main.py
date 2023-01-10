@@ -3,7 +3,7 @@
 
 ## Import the libraries
 from variables import data_url, numbers_url
-from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_and_evens, over_under_35
+from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_and_evens, over_under_35, last_three_draws
 from tens_csv import tens_csv
 from tens_chart_matplot import tens_charts
 from number_occurrence_chart import keno_number_count
@@ -49,8 +49,8 @@ if check_password():
                        page_title="Lottery Number Analysis"
                        )
 
-    ## Load dataset
 
+    ## Load dataset
     def load_data(url):
         df = pd.read_csv(url, index_col=0)
         return df
@@ -64,48 +64,11 @@ if check_password():
               'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
               ]]
 
-    #Numbers_2", "Odds_vs_Evens", "Repeated Numbers", "Two_Game_Number_Comparison",\
-        #     'Consecutive_Numbers', "Over_Under_35", "Tens_Category", "Sum_of_picks"]]
 
     title = f"<h4 style = 'font-size:45px; color:#02A161; FONT-FAMILY:liberation serif;'> KENO GAME STATS OVER THE LAST <mark style = 'font-family:liberation serif; font-size:41px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h4>"
 
     st.markdown(f"{title}", unsafe_allow_html=True)
-
-    # st.metric(label="LAST GAMES",
-    #           value=len(df))
-
-    col1, col2, col3 = st.columns((1,1,4), gap="medium")
-
-
-    with col1:
-        #st.image('images/number-blocks.png', width=50)
-
-        o_e = odds_and_evens(df, "Odds_vs_Evens")
-
-        st.metric(label="ODD #'s",
-                  value=f'{o_e[0]}')
-        st.metric(label="EVEN #'s",
-                  value=f'{o_e[1]}')
-
-    with col2:
-
-        over_under = over_under_35(df=df, col_name="Over_Under_35")
-        st.metric(label="1-34",
-                  value=f"{over_under[1]}"
-                  )
-        st.metric(label="35-70",
-                  value=f"{over_under[0]}"
-                  )
-
-    # with col3:
-    #     df_tens = pd.read_csv(
-    #         "data/tens_breakdown_new.csv",
-    #         index_col=0
-    #     )
-    #     st.line_chart(df_tens)
-
-    with col3:
-        st.write("PLACEHOLDER")
+    st.markdown("---", unsafe_allow_html=True)
 
 
 
@@ -125,11 +88,54 @@ if check_password():
         with col_b:
             st.write(f'{count_down_1}' , unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
-        st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h3>",
+        st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h5>",
                            unsafe_allow_html=True)
         st.write(last_draw_date_1)
         last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
+        st.markdown("<H4 style='color:#A17512 ; font-size: 16px;'> NUMBERS DRAWN (1-70) </h4",
+                    unsafe_allow_html=True)
         st.write(last_numbers)
+
+        st.markdown("<H4 style='color:#A17512 ; font-size: 16px;'> OTHER GAME STATS </h4",
+                    unsafe_allow_html=True)
+
+        col1, col2, col3 = st.columns((2, 1, 2), gap="medium")
+        with col1:
+            o_e = odds_and_evens(df, "Odds_vs_Evens")
+
+            st.metric(label="ODD #'s",
+                      value=f'{o_e[0]}')
+            st.metric(label="EVEN #'s",
+                      value=f'{o_e[1]}')
+
+        with col2:
+            st.markdown("<p style='border-left:3px solid #02A161; height:130px; marginTop:10px;'> </p>",
+                        unsafe_allow_html=True)
+
+        with col3:
+            over_under = over_under_35(df=df, col_name="Over_Under_35")
+            st.metric(label="1-34",
+                      value=f"{over_under[1]}"
+                      )
+            st.metric(label="35-70",
+                      value=f"{over_under[0]}"
+                      )
+
+        repeated_numbers = last_drawn_numbers(df=df, col_name="Repeated Numbers")
+        three_x = last_three_draws(df=df, col_name="Numbers_2")
+
+        col_d, col_e, col_f = st.columns((2,1,2))
+        with col_d:
+            st.markdown("REPEATED (2x)")
+            st.write(repeated_numbers)
+
+        with col_e:
+            st.markdown("<p style='border-left:3px solid #02A161; height:60px; marginTop:5px;'> </p>",
+                        unsafe_allow_html=True)
+
+        with col_f:
+            st.markdown("REPEATED (3x)")
+            st.write(f"{list(three_x)}")
 
 
     col9, col10 = st.columns((1,3), gap="medium")
