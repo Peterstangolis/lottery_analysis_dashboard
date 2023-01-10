@@ -143,9 +143,10 @@ if check_password():
         with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
             st.dataframe(df2)
 
-    number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
-    fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
-    st.plotly_chart(fig3)
+    with st.expander(label="🖱️ CLICK TO VIEW A TABLE TRACKING WHEN NUMBERS WERE DRAWN"):
+        number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
+        fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
+        st.plotly_chart(fig3)
 
 
 
