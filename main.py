@@ -7,6 +7,8 @@ from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_a
 from tens_csv import tens_csv
 from tens_chart_matplot import tens_charts
 from number_occurrence_chart import keno_number_count
+from number_tracking import number_tracker
+from number_tracker_table import number_track_table
 
 import pandas as pd
 import streamlit as st
@@ -140,6 +142,10 @@ if check_password():
         st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
         with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
             st.dataframe(df2)
+
+    number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
+    fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
+    st.plotly_chart(fig3)
 
 
 
