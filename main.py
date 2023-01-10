@@ -131,7 +131,7 @@ if check_password():
 
     with col10:
         df_tens = pd.read_csv(
-            "data/tens_breakdown_new.csv",
+            "data/tens_breakdown.csv",
             parse_dates=True,
             index_col=0)
         fig = tens_charts(df=df_tens)
