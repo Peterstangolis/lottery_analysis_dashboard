@@ -84,7 +84,7 @@ if check_password():
         st.write(next_draw_date_1, unsafe_allow_html=True)
         col_a, col_b = st.columns((.5,2))
         with col_a:
-            st.image("images/time.png", width=40)
+            st.image("images/time.png", width=30)
         with col_b:
             st.write(f'{count_down_1}' , unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)

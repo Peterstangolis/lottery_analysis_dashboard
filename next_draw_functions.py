@@ -7,6 +7,9 @@ def upcoming_draw_date(df):
 
     import pandas as pd
     import datetime as dt
+    import pytz
+
+    timezone = pytz.timezone('US/Eastern')
 
     last_draw_date = df.tail(1)["Draw Date"].values[0]
     month = pd.DatetimeIndex(df.tail(1)["Draw Date"]).month[0]
@@ -18,8 +21,8 @@ def upcoming_draw_date(df):
 
     if midd_even == "Evening":
         next_draw_time = "Midday"
-        next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00)
-        last_draw_date = dt.datetime(year, month, day)
+        next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00, timezone)
+        last_draw_date = dt.datetime(year, month, day, timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
