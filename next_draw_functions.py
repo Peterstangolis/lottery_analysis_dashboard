@@ -21,13 +21,15 @@ def upcoming_draw_date(df):
 
     if midd_even == "Evening":
         next_draw_time = "Midday"
-        next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00, timezone)
-        last_draw_date = dt.datetime(year, month, day, timezone)
+        next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00)
+        next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
+        last_draw_date = dt.datetime(year, month, day)
+        last_draw_date = last_draw_date.replace(tzinfo=timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
-        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00,  timezone)
-        last_draw_date = dt.datetime(year, month, day,  timezone)
+        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00)
+        last_draw_date = dt.datetime(year, month, day)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
 
 
