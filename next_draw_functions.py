@@ -26,8 +26,8 @@ def upcoming_draw_date(df):
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
-        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00)
-        last_draw_date = dt.datetime(year, month, day)
+        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00,  timezone)
+        last_draw_date = dt.datetime(year, month, day,  timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
 
 
