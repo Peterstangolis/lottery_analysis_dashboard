@@ -79,6 +79,7 @@ if check_password():
         with col_q:
             st.image('images/ca-keno-2x-png.png', width=160)
         with col_r:
+            st.markdown("<br>", unsafe_allow_html=True)
             st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %H:%M:%S%p %Z')} </h5>",
                      unsafe_allow_html=True)
 
