@@ -61,7 +61,7 @@ if check_password():
     tens_csv(df)
 
 
-    df2 = df[['Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeated Numbers', \
+    df2 = df[['Draw Date', 'Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeated Numbers', \
               'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
               ]]
 
