@@ -24,14 +24,14 @@ def upcoming_draw_date(df):
         next_draw_time = "Midday"
         next_draw_date_time = dt.datetime(year, month, day, 1, 14, 00, 00, tzinfo=timezone)
         #next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
-        last_draw_date = dt.datetime(year, month, day)
+        last_draw_date = dt.datetime(year, month, day, tzinfo=timezone)
         #last_draw_date = last_draw_date.replace(tzinfo=timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
         next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00, tzinfo=timezone)
         #next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
-        last_draw_date = dt.datetime(year, month, day)
+        last_draw_date = dt.datetime(year, month, day, tzinfo=timezone)
         #last_draw_date = last_draw_date.replace(tzinfo=timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
 
@@ -50,7 +50,7 @@ def time_until_next_draw(df):
     hours_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[0]
 
     next_draw_date = f"{upcoming_draw.strftime('%A')} | {upcoming_draw.strftime('%#d %b %Y')} | {midday_or_evening}"
-    next_draw_time = f"| {upcoming_draw.strftime('%H:%M %p %Z')}"
+    next_draw_time = f"| {upcoming_draw.strftime('%h:%M %p %Z')}"
     countdown_to_draw = f"{hours_to_draw}h : {minutes_to_draw}m :{seconds_to_draw}"
 
     last_draw_date_format = f"{last_draw_date.strftime('%A')} | {last_draw_date.strftime('%#d %b %Y')} | {midday_or_evening_last}"

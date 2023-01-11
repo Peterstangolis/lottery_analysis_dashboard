@@ -86,7 +86,7 @@ if check_password():
         with col_a:
             st.image("images/time.png", width=30)
         with col_b:
-            st.write(f'{count_down_1} {next_draw_time_1}' , unsafe_allow_html=True)
+            st.write(f'{count_down_1}  {next_draw_time_1} ' , unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
         st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h5>",
                            unsafe_allow_html=True)
