@@ -1,5 +1,6 @@
+import datetime
 
-
+import pytz
 
 ## Import the libraries
 from variables import data_url, numbers_url
@@ -74,7 +75,13 @@ if check_password():
 
 
     with st.sidebar:
-        st.image('images/ca-keno-2x-png.png', width=160)
+        col_q, col_r = st.columns((1,1))
+        with col_q:
+            st.image('images/ca-keno-2x-png.png', width=160)
+        with col_r:
+            st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %H:%M:%S%p %Z')} </h5>",
+                     unsafe_allow_html=True)
+
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
         col6 = st.write(" ")
         col7 = st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  NEXT DRAW </h3>",
@@ -84,14 +91,16 @@ if check_password():
         next_draw_date_1, next_draw_time_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
         col_o, col_p = st.columns((0.4, 2))
         with col_o:
-            st.image("images/calendar.jpg", width=30)
+            st.image("images/calendar.png", width=30)
         with col_p:
             st.write(next_draw_date_1, unsafe_allow_html=True)
         col_a, col_b = st.columns((.4,2))
         with col_a:
             st.image("images/time.png", width=30)
         with col_b:
-            st.write(f'{count_down_1}  {next_draw_time_1} ' , unsafe_allow_html=True)
+            st.write(f"<mark style = 'font-family:liberation serif; font-size:17px; color:#A17512; background-color:transparent;'>{count_down_1}</mark>  {next_draw_time_1} " , unsafe_allow_html=True)
+
+        st.markdown("<br>", unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
         st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h5>",
                            unsafe_allow_html=True)
