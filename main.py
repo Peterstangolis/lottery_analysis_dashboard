@@ -80,13 +80,13 @@ if check_password():
                            unsafe_allow_html=True)
 
 
-        next_draw_date_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
+        next_draw_date_1, next_draw_time_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
         st.write(next_draw_date_1, unsafe_allow_html=True)
         col_a, col_b = st.columns((.5,2))
         with col_a:
             st.image("images/time.png", width=30)
         with col_b:
-            st.write(f'{count_down_1}' , unsafe_allow_html=True)
+            st.write(f'{count_down_1} {next_draw_time_1}' , unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
         st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h5>",
                            unsafe_allow_html=True)

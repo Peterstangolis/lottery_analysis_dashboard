@@ -50,11 +50,12 @@ def time_until_next_draw(df):
     hours_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[0]
 
     next_draw_date = f"{upcoming_draw.strftime('%A')} | {upcoming_draw.strftime('%#d %b %Y')} | {midday_or_evening}"
+    next_draw_time = f"| {upcoming_draw.strftime('%H:%M %p %Z')}"
     countdown_to_draw = f"{hours_to_draw}h : {minutes_to_draw}m :{seconds_to_draw}"
 
     last_draw_date_format = f"{last_draw_date.strftime('%A')} | {last_draw_date.strftime('%#d %b %Y')} | {midday_or_evening_last}"
 
-    return next_draw_date, countdown_to_draw, last_draw_date_format
+    return next_draw_date, next_draw_time, countdown_to_draw, last_draw_date_format
 
 # Return the last draws numbers
 def last_drawn_numbers(df, col_name):
