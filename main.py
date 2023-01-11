@@ -9,6 +9,7 @@ from tens_chart_matplot import tens_charts
 from number_occurrence_chart import keno_number_count
 from number_tracking import number_tracker
 from number_tracker_table import number_track_table
+from keno_numbers_table import keno_table
 
 import pandas as pd
 import streamlit as st
@@ -146,6 +147,8 @@ if check_password():
                           names=colnames
                           )
         fig2 = keno_number_count(df=df5)
+        st.markdown("<H4 style='color:#A17512 ; font-size: 26px;'> RUNNING COUNT OF EACH \n KENO NUMBER DRAWN </h4",
+                    unsafe_allow_html=True)
         st.pyplot(fig2)
 
     with col10:
@@ -154,16 +157,29 @@ if check_password():
             parse_dates=True,
             index_col=0)
         fig = tens_charts(df=df_tens)
+        st.markdown("<H4 style='color:#A17512 ; font-size: 26px;'> COUNT OF THE OCCURRENCES<br> OF EACH 10's DIGITS </h4",
+                    unsafe_allow_html=True)
         st.pyplot(fig=fig)
 
-        st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
+        st.markdown(
+            f"<H4 style='color:#A17512 ; font-size: 26px;'> Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS </h4>",
+            unsafe_allow_html=True)
+        #st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
         with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
             st.dataframe(df2)
 
-    with st.expander(label="🖱️ CLICK TO VIEW A TABLE TRACKING WHEN NUMBERS WERE DRAWN"):
+    st.markdown(
+        f"<H4 style='color:#A17512 ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
+        unsafe_allow_html=True)
+    with st.expander(label="🖱️ CLICK TO VIEW TABLE"):
         number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
         fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
-        st.plotly_chart(fig3)
+        fig4 = keno_table()
+        col_z, col_y = st.columns((1, 10))
+        with col_z:
+            st.plotly_chart(fig4)
+        with col_y:
+            st.plotly_chart(fig3)
 
 
 

@@ -25,7 +25,7 @@ def tens_charts(df):
                             linewidth=5,
                             facecolor='lightyellow')
 
-    fig.suptitle("TOTAL OCCURRENCES OF 10'S DIGITS")
+    #fig.suptitle("TOTAL OCCURRENCES OF 10'S DIGITS")
 
     for n, p in enumerate(axs):
 

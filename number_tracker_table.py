@@ -27,6 +27,8 @@ def number_track_table(df):
     df_track = df_track.iloc[1:]
     df_track_10 = df_track.iloc[0:, -20:]
 
+    print(df_track_10)
+
     cols = df_track_10.columns
     cols_2 = []
     for col in cols:
@@ -76,8 +78,9 @@ def number_track_table(df):
     ])
 
     fig.update_layout(
-        autosize=True,
+        autosize=False,
+        margin=dict(l=5, r=5, t=5, b=5),
         width=1400,
-        height=1700)
+        height=2200)
 
     return fig

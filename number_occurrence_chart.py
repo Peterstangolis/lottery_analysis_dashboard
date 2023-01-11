@@ -8,13 +8,16 @@ def keno_number_count(df):
 
     my_range = range(1, len(df.index) + 1)
 
-    fig, ax = plt.subplots(figsize=(4, 12),
+    fig, ax = plt.subplots(figsize=(4, 11),
                            facecolor='lightyellow',
                            linewidth = 5,
                            edgecolor='darkgreen',
-                           constrained_layout=True,
+                           constrained_layout=True
                            )
-    fig.suptitle("A Running Count Of How Often Each \nKeno # Has Been Picked")
+    fig.subplots_adjust(top=0.1,
+                        bottom=0.1)
+
+    #fig.suptitle("A Running Count Of How Often Each \nKeno # Has Been Picked")
 
     plt.tick_params(
         axis='x',  # changes apply to the x-axis
