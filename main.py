@@ -74,7 +74,7 @@ if check_password():
 
 
     with st.sidebar:
-        st.image('images/ca-keno-2x-png.png', width=150)
+        st.image('images/ca-keno-2x-png.png', width=160)
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
         col6 = st.write(" ")
         col7 = st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  NEXT DRAW </h3>",
@@ -82,8 +82,12 @@ if check_password():
 
 
         next_draw_date_1, next_draw_time_1, count_down_1, last_draw_date_1 = time_until_next_draw(df)
-        st.write(next_draw_date_1, unsafe_allow_html=True)
-        col_a, col_b = st.columns((.5,2))
+        col_o, col_p = st.columns((0.4, 2))
+        with col_o:
+            st.image("images/calendar.jpg", width=30)
+        with col_p:
+            st.write(next_draw_date_1, unsafe_allow_html=True)
+        col_a, col_b = st.columns((.4,2))
         with col_a:
             st.image("images/time.png", width=30)
         with col_b:
