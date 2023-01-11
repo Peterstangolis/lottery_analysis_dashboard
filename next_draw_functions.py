@@ -1,3 +1,4 @@
+import pytz
 
 from variables import data_url
 
@@ -21,17 +22,17 @@ def upcoming_draw_date(df):
 
     if midd_even == "Evening":
         next_draw_time = "Midday"
-        next_draw_date_time = dt.datetime(year, month, day + 1, 14, 00, 00)
-        next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
+        next_draw_date_time = dt.datetime(year, month, day, 1, 14, 00, 00, tzinfo=timezone)
+        #next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
         last_draw_date = dt.datetime(year, month, day)
-        last_draw_date = last_draw_date.replace(tzinfo=timezone)
+        #last_draw_date = last_draw_date.replace(tzinfo=timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
     else:
         next_draw_time = "Evening"
-        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00)
-        next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
+        next_draw_date_time = dt.datetime(year, month, day, 22, 30, 00, tzinfo=timezone)
+        #next_draw_date_time = next_draw_time.replace(tzinfo=timezone)
         last_draw_date = dt.datetime(year, month, day)
-        last_draw_date = last_draw_date.replace(tzinfo=timezone)
+        #last_draw_date = last_draw_date.replace(tzinfo=timezone)
         return next_draw_date_time, next_draw_time, last_draw_date, midd_even
 
 
@@ -42,7 +43,7 @@ def time_until_next_draw(df):
     upcoming_draw, midday_or_evening, last_draw_date, midday_or_evening_last = upcoming_draw_date(df)
     # print(upcoming_draw, midday_or_evening)
 
-    time_until_keno_draw = upcoming_draw - dt.datetime.now()
+    time_until_keno_draw = upcoming_draw - dt.datetime.now(pytz.timezone('US/Eastern'))
 
     seconds_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[2]
     minutes_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[1]
