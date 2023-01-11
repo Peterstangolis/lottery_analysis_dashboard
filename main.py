@@ -67,7 +67,7 @@ if check_password():
               ]]
 
 
-    title = f"<h4 style = 'font-size:45px; color:#02A161; FONT-FAMILY: Yardmaster Becker liberation serif;'> KENO GAME STATS OVER THE LAST <mark style = 'font-family:liberation serif; font-size:41px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h4>"
+    title = f"<h4 style = 'font-size:45px; color:#02A161; FONT-FAMILY: Yardmaster_Becker liberation serif;'> KENO GAME STATS OVER THE LAST <mark style = 'font-family:liberation serif; font-size:41px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h4>"
 
     st.markdown(f"{title}", unsafe_allow_html=True)
     st.markdown("---", unsafe_allow_html=True)
