@@ -105,7 +105,7 @@ if check_password():
 
 
     with st.sidebar:
-        col_q, col_r = st.columns((1,1))
+        col_q, col_r = st.columns((1,1.5))
         with col_q:
             st.image('images/ca-keno-2x-png.png', width=140)
         with col_r:
