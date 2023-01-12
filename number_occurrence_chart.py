@@ -27,7 +27,7 @@ def keno_number_count(df):
         labelbottom=False)  # labels along the bottom edge are off
 
     ax.hlines(y=my_range, xmin=df_sorted["start"], xmax=df_sorted["SELECTED TOTAL"],
-              color='grey', alpha=0.5)
+              color='lightgreen', alpha=0.5)
 
     ax.scatter(df_sorted["SELECTED TOTAL"], my_range,
                # color='skyblue',
