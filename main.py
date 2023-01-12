@@ -77,11 +77,14 @@ if check_password():
                     unsafe_allow_html=True)
 
     with col_k:
-        st.markdown(
-            "<H4 style='color:#A17512 ; font-size: 27px;'> QUICK PICKS  </h4>",
-            unsafe_allow_html=True)
+        # st.markdown(
+        #     "<H4 style='color:#A17512 ; font-size: 27px;'> QUICK PICKS  </h4>",
+        #     unsafe_allow_html=True)
         with st.form(key="quick_pick_selection"):
             #submitted = st.form_submit_button(label="Get Numbers")
+            st.markdown(
+                "<H4 style='color:#A17512 ; font-size: 27px;'> QUICK PICKS  </h4>",
+                unsafe_allow_html=True)
             st.markdown("<H4 style='color:lightyellow ; font-size: 18px;'> How many numbers do you want? </h4",
                         unsafe_allow_html=True)
             #st.image(image='images/ball_selection.png', width=40)
