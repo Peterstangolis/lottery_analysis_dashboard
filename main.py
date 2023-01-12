@@ -73,22 +73,31 @@ if check_password():
         st.markdown(f"{title}", unsafe_allow_html=True)
 
     with col_j:
-        st.markdown("<p style='border-left:4px solid #02A161; height:200px; marginTop:10px;'> </p>",
+        st.markdown("<p style='border-left:3px solid #02A161; height:240px; marginTop:10px;'> </p>",
                     unsafe_allow_html=True)
 
     with col_k:
+        st.markdown(
+            "<H4 style='color:#A17512 ; font-size: 27px;'> QUICK PICKS  </h4>",
+            unsafe_allow_html=True)
         with st.form(key="quick_pick_selection"):
             #submitted = st.form_submit_button(label="Get Numbers")
-            st.markdown("<H4 style='color:#A17512 ; font-size: 18px;'> How many numbers do you want? </h4",
+            st.markdown("<H4 style='color:lightyellow ; font-size: 18px;'> How many numbers do you want? </h4",
                         unsafe_allow_html=True)
-            st.image(image='images/ball_selection.png')
+            #st.image(image='images/ball_selection.png', width=40)
             numbers = st.select_slider('', [2,3,5,6,7,8,8,9,10])
             submitted = st.form_submit_button(label="Get Numbers")
             quick_picks = quick_picks(n=numbers)
             #st.write(quick_picks)
-            st.markdown(f"<H4 style='color:#A17512 ; font-size: 20px;'> {quick_picks}</h4",
-                        unsafe_allow_html=True)
-        st.write(submitted)
+
+            # st.markdown(f"<p style='color:#A17512 ; font-size: 20px;'> {quick_picks[0]} , {quick_picks[1]} </p> ",
+            #             unsafe_allow_html=True)
+            if submitted:
+                st.markdown(f"<p style='color:#A17512 ; font-size: 26px; border-style:solid;border-color:#02A161; padding:5px;'> {quick_picks} </p> ", unsafe_allow_html=True)
+            else:
+                st.markdown(f"<p style='color:lightyellow ; font-size: 26px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
+
+
     st.markdown("---", unsafe_allow_html=True)
 
 

@@ -7,7 +7,7 @@ def quick_picks(n:int):
 
     _sysrand = random.SystemRandom()
     numbers = _sysrand.sample(keno_combinations, n)
-    print(numbers)
-    print(numbers[0])
+
+    [print(num, end=",") for num in numbers]
 
     return sorted(numbers)
