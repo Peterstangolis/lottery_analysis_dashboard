@@ -12,7 +12,7 @@ def keno_table():
 
     fig = go.Figure(data=[go.Table(
         header=dict(
-            values=['<b>KENO NUMBERS</b>'],
+            values=['<b>KENO<br>NUMBERS</b>'],
             line_color='lightyellow', fill_color='darkgreen',
             align='center', font=dict(color='white', size=14),
             height=50
@@ -31,7 +31,7 @@ def keno_table():
         autosize=False,
         #paper_bgcolor="forestgreen",
         margin=dict(l=5, r=5, t=5, b=5),
-        width=160,
+        width=150,
         height=2200)
 
     # fig.write_image("keno_num_table.jpeg",
