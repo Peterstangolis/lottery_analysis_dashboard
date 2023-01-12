@@ -111,7 +111,7 @@ if check_password():
             st.write("")
         with col_s:
             st.markdown("<br>", unsafe_allow_html=True)
-            st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %H:%M:%S%p %Z')} </h5>",
+            st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
                      unsafe_allow_html=True)
 
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
