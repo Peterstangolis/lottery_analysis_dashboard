@@ -98,7 +98,9 @@ if check_password():
             else:
                 st.markdown(f"<p style='color:lightyellow ; font-size: 14px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
 
-
+    st.write(
+        f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
+        unsafe_allow_html=True)
     st.markdown("---", unsafe_allow_html=True)
 
 
