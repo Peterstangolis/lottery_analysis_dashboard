@@ -46,7 +46,7 @@ def check_password():
 
 if check_password():
     # Initial page setup
-    st.set_page_config(page_icon= '🎲',
+    st.set_page_config(page_icon= ('🎰'),
                        layout="wide",
                        initial_sidebar_state="expanded",
                        page_title="Lottery Number Analysis"
