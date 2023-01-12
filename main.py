@@ -11,6 +11,7 @@ from number_occurrence_chart import keno_number_count
 from number_tracking import number_tracker
 from number_tracker_table import number_track_table
 from keno_numbers_table import keno_table
+from random_number_generator import quick_picks
 
 import pandas as pd
 import streamlit as st
@@ -66,10 +67,28 @@ if check_password():
               'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
               ]]
 
+    col_i, col_j, col_k = st.columns((2,0.5, 1))
+    with col_i:
+        title = f"<h1 style = 'font-size:50px; color:#02A161;'> KENO GAME STATS OVER <br>THE LAST <mark style = 'font-family:liberation serif; font-size:55px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h1>"
+        st.markdown(f"{title}", unsafe_allow_html=True)
 
-    title = f"<h4 style = 'font-size:45px; color:#02A161; FONT-FAMILY: Yardmaster_Becker liberation serif;'> KENO GAME STATS OVER THE LAST <mark style = 'font-family:liberation serif; font-size:41px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h4>"
+    with col_j:
+        st.markdown("<p style='border-left:4px solid #02A161; height:200px; marginTop:10px;'> </p>",
+                    unsafe_allow_html=True)
 
-    st.markdown(f"{title}", unsafe_allow_html=True)
+    with col_k:
+        with st.form(key="quick_pick_selection"):
+            #submitted = st.form_submit_button(label="Get Numbers")
+            st.markdown("<H4 style='color:#A17512 ; font-size: 18px;'> How many numbers do you want? </h4",
+                        unsafe_allow_html=True)
+            st.image(image='images/ball_selection.png')
+            numbers = st.select_slider('', [2,3,5,6,7,8,8,9,10])
+            submitted = st.form_submit_button(label="Get Numbers")
+            quick_picks = quick_picks(n=numbers)
+            #st.write(quick_picks)
+            st.markdown(f"<H4 style='color:#A17512 ; font-size: 20px;'> {quick_picks}</h4",
+                        unsafe_allow_html=True)
+        st.write(submitted)
     st.markdown("---", unsafe_allow_html=True)
 
 

@@ -1,7 +1,21 @@
 
 
 @font-face {
-    font-family: "Yardmaster Becker";
-    src: url("fonts/Yardmaster Becker Regular.ttf");
+    font-family: 'Yardmaster Becker';
+    src: url("https://github.com/Peterstangolis/lottery_analysis_dashboard/blob/main/fonts/Yardmaster%20Becker%20Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'Codystar';
+    src: url("https://fonts.googleapis.com/css2?family=Codystar&display=swap");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+h1 {
+font-family: 'Codystar', Arial, sans-serif;
+}
