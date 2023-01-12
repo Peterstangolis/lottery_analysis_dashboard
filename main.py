@@ -98,22 +98,20 @@ if check_password():
             else:
                 st.markdown(f"<p style='color:lightyellow ; font-size: 14px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
 
-    st.write(
-        f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
-        unsafe_allow_html=True)
+
     st.markdown("---", unsafe_allow_html=True)
 
 
 
     with st.sidebar:
-        col_q, col_r, col_s = st.columns((1, 0.5,1))
-        with col_q:
-            st.image('images/ca-keno-2x-png.png', width=130)
-        with col_r:
-            st.write("")
-        with col_s:
-            st.markdown("<br>", unsafe_allow_html=True)
-            st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
+        #col_q, col_r, col_s = st.columns((1, 0.5,1))
+        #with col_q:
+        st.image('images/ca-keno-2x-png.png', width=130)
+        #with col_r:
+            #st.write("")
+        #with col_s:
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
                      unsafe_allow_html=True)
 
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
