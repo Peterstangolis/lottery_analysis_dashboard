@@ -94,7 +94,7 @@ if check_password():
             #             unsafe_allow_html=True)
             if submitted:
                 st.balloons()
-                st.markdown(f"<p style='color:#A17512 ; font-size: 26px; border-style:solid;border-color:#02A161; text-align:center; padding:5px;'> {quick_picks} </p> ", unsafe_allow_html=True)
+                st.markdown(f"<p style='color:#A17512 ; font-size: 24px; border-style:solid;border-color:#02A161; text-align:center; padding:5px;'> {quick_picks} </p> ", unsafe_allow_html=True)
             else:
                 st.markdown(f"<p style='color:lightyellow ; font-size: 14px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
 
