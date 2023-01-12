@@ -93,6 +93,8 @@ if check_password():
             # st.markdown(f"<p style='color:#A17512 ; font-size: 20px;'> {quick_picks[0]} , {quick_picks[1]} </p> ",
             #             unsafe_allow_html=True)
             if submitted:
+                st.success(f"Here are your {numbers} Quick Pick numbers")
+                st.balloons()
                 st.markdown(f"<p style='color:#A17512 ; font-size: 26px; border-style:solid;border-color:#02A161; text-align:center; padding:5px;'> {quick_picks} </p> ", unsafe_allow_html=True)
             else:
                 st.markdown(f"<p style='color:lightyellow ; font-size: 26px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
