@@ -104,7 +104,7 @@ if check_password():
 
 
     with st.sidebar:
-        col_q, col_r, col_s = st.columns((2,0.5, 2))
+        col_q, col_r, col_s = st.columns((1, 0.5,1))
         with col_q:
             st.image('images/ca-keno-2x-png.png', width=130)
         with col_r:
@@ -216,7 +216,7 @@ if check_password():
     st.markdown(
         f"<H4 style='color:#A17512 ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
         unsafe_allow_html=True)
-    with st.expander(label="🖱️ CLICK TO VIEW TABLE  ('1' = NUMBER DRAWN, '0' = NOT DRAWN )"):
+    with st.expander(label="🖱️ CLICK TO VIEW TABLE   ('1' = NUMBER DRAWN, '0' = NOT DRAWN )"):
         number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
         fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
         fig4 = keno_table()
