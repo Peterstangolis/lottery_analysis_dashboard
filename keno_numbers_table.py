@@ -31,7 +31,7 @@ def keno_table():
         autosize=False,
         #paper_bgcolor="forestgreen",
         margin=dict(l=5, r=5, t=5, b=5),
-        width=150,
+        width=140,
         height=2200)
 
     # fig.write_image("keno_num_table.jpeg",
