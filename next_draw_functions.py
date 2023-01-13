@@ -10,7 +10,7 @@ def upcoming_draw_date(df):
     import datetime as dt
     import pytz
 
-    timezone = pytz.timezone('US/Eastern')
+    timezone = pytz.timezone('EST')
 
     last_draw_date = df.tail(1)["Draw Date"].values[0]
     month = pd.DatetimeIndex(df.tail(1)["Draw Date"]).month[0]
@@ -43,7 +43,7 @@ def time_until_next_draw(df):
     upcoming_draw, midday_or_evening, last_draw_date, midday_or_evening_last = upcoming_draw_date(df)
     # print(upcoming_draw, midday_or_evening)
 
-    time_until_keno_draw = upcoming_draw - dt.datetime.now(pytz.timezone('US/Eastern'))
+    time_until_keno_draw = upcoming_draw - dt.datetime.now(pytz.timezone('EST'))
 
     seconds_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[2]
     minutes_to_draw = str(time_until_keno_draw).split(".")[0].split(":")[1]
