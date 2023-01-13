@@ -85,7 +85,7 @@ if check_password():
         with st.form(key="quick_pick_selection"):
             #submitted = st.form_submit_button(label="Get Numbers")
             st.markdown(
-                "<H4 style='color:#A17512 ; font-size: 27px;'> QUICK PICKS  </h4>",
+                "<H4 style='color:#F0B74D ; font-size: 27px;'> QUICK PICKS  </h4>",
                 unsafe_allow_html=True)
             st.markdown("<H4 style='color:lightyellow ; font-size: 18px;'> How many numbers do you want? </h4",
                         unsafe_allow_html=True)
@@ -197,7 +197,7 @@ if check_password():
                           names=colnames
                           )
         fig2 = keno_number_count(df=df5)
-        st.markdown("<H4 style='color:#A17512 ; font-size: 26px;'> RUNNING COUNT OF EACH \n KENO NUMBER DRAWN </h4",
+        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'>TRACKING HOW OFTEN EACH <br> KENO NUMBER HAS BEEN DRAWN </h4",
                     unsafe_allow_html=True)
         st.pyplot(fig2)
 
@@ -207,7 +207,7 @@ if check_password():
             parse_dates=True,
             index_col=0)
         fig = tens_charts(df=df_tens)
-        st.markdown("<H4 style='color:#A17512 ; font-size: 26px;'> COUNT OF THE OCCURRENCES<br> OF EACH 10's DIGITS </h4",
+        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> COUNT OF THE OCCURRENCES<br> OF EACH 10's DIGITS </h4",
                     unsafe_allow_html=True)
         st.pyplot(fig=fig)
 
