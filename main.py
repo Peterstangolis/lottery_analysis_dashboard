@@ -66,7 +66,7 @@ if check_password():
 
 
     df2 = df[['Draw Date', 'Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeated Numbers', \
-              'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
+              'Numbers Not Repeated', 'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
               ]]
 
     col_i, col_j, col_k = st.columns((2,0.5, 1))
@@ -116,7 +116,7 @@ if check_password():
             #st.write("")
         #with col_s:
         st.markdown("<br>", unsafe_allow_html=True)
-        st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M:%S%p %Z')} </h5>",
+        st.write(f"<H5 style='color:#02A161; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M%p %Z')} </h5>",
                      unsafe_allow_html=True)
 
         col6, col7, col8 = st.columns((.5, 3, .5), gap='small')
