@@ -71,7 +71,7 @@ if check_password():
 
     col_i, col_j, col_k = st.columns((2,0.5, 1))
     with col_i:
-        title = f"<h1 style = 'font-size:50px; color:#02A161;'> KENO GAME STATS OVER <br>THE LAST <mark style = 'font-family:liberation serif; font-size:55px; color:#A17512; background-color:transparent;'>{len(df)}</mark> GAMES</h1>"
+        title = f"<h1 style = 'font-size:50px; color:#02A161;'> KENO GAME STATS OVER <br>THE LAST <mark style = 'font-family:liberation serif; font-size:55px; color:#F0B74D; background-color:transparent;'>{len(df)}</mark> GAMES</h1>"
         st.markdown(f"{title}", unsafe_allow_html=True)
 
     with col_j:
@@ -135,7 +135,7 @@ if check_password():
         with col_a:
             st.image("images/time.png", width=30)
         with col_b:
-            st.write(f"<mark style = 'font-family:liberation serif; font-size:17px; color:#A17512; background-color:transparent;'>{count_down_1}</mark>  {next_draw_time_1} " , unsafe_allow_html=True)
+            st.write(f"<mark style = 'font-family:liberation serif; font-size:17px; color:#F0B74D; background-color:transparent;'>{count_down_1}</mark>  {next_draw_time_1} " , unsafe_allow_html=True)
 
         st.markdown("<br>", unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
@@ -143,11 +143,11 @@ if check_password():
                            unsafe_allow_html=True)
         st.write(last_draw_date_1)
         last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
-        st.markdown("<H4 style='color:#A17512 ; font-size: 16px;'> NUMBERS DRAWN (1-70) </h4",
+        st.markdown("<H4 style='color:#F0B74D ; font-size: 16px;'> NUMBERS DRAWN (1-70) </h4",
                     unsafe_allow_html=True)
         st.write(last_numbers)
 
-        st.markdown("<H4 style='color:#A17512 ; font-size: 16px;'> OTHER GAME STATS </h4",
+        st.markdown("<H4 style='color:#F0B74D ; font-size: 16px;'> OTHER GAME STATS </h4",
                     unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns((2, 1, 2), gap="medium")
