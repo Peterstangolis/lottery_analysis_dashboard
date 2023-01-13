@@ -207,7 +207,7 @@ if check_password():
             parse_dates=True,
             index_col=0)
         fig = tens_charts(df=df_tens)
-        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> COUNT OF THE OCCURRENCES<br> OF EACH 10's DIGITS </h4",
+        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> EACH DRAWS 10's DIGITS BREAKDOWN </h4",
                     unsafe_allow_html=True)
         st.pyplot(fig=fig)
 
