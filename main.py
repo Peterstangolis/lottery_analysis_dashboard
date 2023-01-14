@@ -3,8 +3,9 @@ import datetime
 import pytz
 
 ## Import the libraries
-from variables import data_url, numbers_url
-from next_draw_functions import time_until_next_draw, last_drawn_numbers, odds_and_evens, over_under_35, last_three_draws
+from variables import data_url, numbers_url, keno_odds
+from next_draw_functions import time_until_next_draw, last_drawn_numbers, \
+    odds_and_evens, over_under_35, last_three_draws
 from tens_csv import tens_csv
 from tens_chart_matplot import tens_charts
 from number_occurrence_chart import keno_number_count
@@ -12,6 +13,7 @@ from number_tracking import number_tracker
 from number_tracker_table import number_track_table
 from keno_numbers_table import keno_table
 from random_number_generator import quick_picks
+
 
 import pandas as pd
 import streamlit as st
@@ -69,7 +71,7 @@ if check_password():
               'Numbers Not Repeated', 'Consecutive_Numbers', 'Tens_Category', 'Sum_of_picks',
               ]]
 
-    col_i, col_j, col_k = st.columns((2,0.5, 1))
+    col_i, col_j, col_k = st.columns((2, 0.5, 1))
     with col_i:
         title = f"<h1 style = 'font-size:50px; color:#02A161;'> KENO GAME STATS OVER <br>THE LAST <mark style = 'font-family:liberation serif; font-size:55px; color:#F0B74D; background-color:transparent;'>{len(df)}</mark> GAMES</h1>"
         st.markdown(f"{title}", unsafe_allow_html=True)
@@ -90,7 +92,7 @@ if check_password():
             st.markdown("<H4 style='color:lightyellow ; font-size: 18px;'> How many numbers do you want? </h4",
                         unsafe_allow_html=True)
             #st.image(image='images/ball_selection.png', width=40)
-            numbers = st.select_slider('', [2,3,5,6,7,8,8,9,10])
+            numbers = st.select_slider('', [2,3,4,5,6,7,8,8,9,10])
             submitted = st.form_submit_button(label="Get Numbers")
             quick_picks = quick_picks(n=numbers)
             #st.write(quick_picks)
@@ -100,12 +102,59 @@ if check_password():
             if submitted:
                 st.balloons()
                 st.markdown(f"<p style='color:#A17512 ; font-size: 24px; border-style:solid;border-color:#02A161; text-align:center; padding:5px;'> {quick_picks} </p> ", unsafe_allow_html=True)
+                prob = keno_odds[str(numbers)][0]
+                odds = keno_odds[str(numbers)][1]
+                st.caption(f"The odds of matching {numbers} numbers from a KENO draw are 1 in {odds:,} or {str(prob)}%")
             else:
                 st.markdown(f"<p style='color:lightyellow ; font-size: 14px; border-style:solid;border-color:#02A161; padding:5px;text-align:center;'>---- quick picks ----</p> ", unsafe_allow_html=True)
 
 
-    st.markdown("---", unsafe_allow_html=True)
+    tab1, tab2 = st.tabs(["📊 View KENO Game Statistics & Charts ", "🎰 Quick Pick & Odds Generator"])
 
+    with tab1:
+        #st.markdown("---", unsafe_allow_html=True)
+
+        col9, col10 = st.columns((1,3), gap="medium")
+        with col9:
+            colnames = ['KENO NUMBERS', 'SELECTED TOTAL']
+            df5 = pd.read_csv(numbers_url,
+                              header=None,
+                              names=colnames
+                              )
+            fig2 = keno_number_count(df=df5)
+            st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'>TRACKING HOW OFTEN EACH <br> KENO NUMBER HAS BEEN DRAWN </h4",
+                        unsafe_allow_html=True)
+            st.pyplot(fig2)
+
+        with col10:
+            df_tens = pd.read_csv(
+                "data/tens_breakdown.csv",
+                parse_dates=True,
+                index_col=0)
+            fig = tens_charts(df=df_tens)
+            st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> EACH DRAWS 10's DIGITS BREAKDOWN </h4",
+                        unsafe_allow_html=True)
+            st.pyplot(fig=fig)
+
+            st.markdown(
+                f"<H4 style='color:#F0B74D ; font-size: 26px;'> DATAFRAME DOCUMENTING <mark style = 'font-family:liberation serif; font-size:27px; color:#02A161; background-color:transparent;'> KENO </MARK> GAME STATS OVER THE LAST {len(df)} DRAWS </h4>",
+                unsafe_allow_html=True)
+            #st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
+            with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
+                st.dataframe(df2)
+
+        st.markdown(
+            f"<H4 style='color:#F0B74D ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
+            unsafe_allow_html=True)
+        with st.expander(label="🖱️ CLICK TO VIEW TABLE   ('1' = NUMBER DRAWN, '0' = NOT DRAWN )"):
+            number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
+            fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
+            fig4 = keno_table()
+            col_z, col_y = st.columns((1, 10))
+            with col_z:
+                st.plotly_chart(fig4)
+            with col_y:
+                st.plotly_chart(fig3)
 
 
     with st.sidebar:
@@ -187,49 +236,6 @@ if check_password():
         with col_f:
             st.markdown("REPEATED (3x)")
             st.write(f"{list(three_x)}")
-
-
-    col9, col10 = st.columns((1,3), gap="medium")
-    with col9:
-        colnames = ['KENO NUMBERS', 'SELECTED TOTAL']
-        df5 = pd.read_csv(numbers_url,
-                          header=None,
-                          names=colnames
-                          )
-        fig2 = keno_number_count(df=df5)
-        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'>TRACKING HOW OFTEN EACH <br> KENO NUMBER HAS BEEN DRAWN </h4",
-                    unsafe_allow_html=True)
-        st.pyplot(fig2)
-
-    with col10:
-        df_tens = pd.read_csv(
-            "data/tens_breakdown.csv",
-            parse_dates=True,
-            index_col=0)
-        fig = tens_charts(df=df_tens)
-        st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> EACH DRAWS 10's DIGITS BREAKDOWN </h4",
-                    unsafe_allow_html=True)
-        st.pyplot(fig=fig)
-
-        st.markdown(
-            f"<H4 style='color:#F0B74D ; font-size: 26px;'> DATAFRAME DOCUMENTING <mark style = 'font-family:liberation serif; font-size:27px; color:#02A161; background-color:transparent;'> KENO </MARK> GAME STATS OVER THE LAST {len(df)} DRAWS </h4>",
-            unsafe_allow_html=True)
-        #st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
-        with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
-            st.dataframe(df2)
-
-    st.markdown(
-        f"<H4 style='color:#F0B74D ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
-        unsafe_allow_html=True)
-    with st.expander(label="🖱️ CLICK TO VIEW TABLE   ('1' = NUMBER DRAWN, '0' = NOT DRAWN )"):
-        number_tracker(df=df, col1="Draw Date", col2="Numbers_2", col3="Time of day")
-        fig3 = number_track_table(df='data/keno_numbers_draw_dates.csv')
-        fig4 = keno_table()
-        col_z, col_y = st.columns((1, 10))
-        with col_z:
-            st.plotly_chart(fig4)
-        with col_y:
-            st.plotly_chart(fig3)
 
 
 

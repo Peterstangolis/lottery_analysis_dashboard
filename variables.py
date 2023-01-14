@@ -6,6 +6,18 @@ numbers_url = 'https://github.com/Peterstangolis/lottery_tracking_dashboard/blob
 
 keno_combinations = list(range(1,71))
 
+keno_odds = {
+    '2' : [7.87, 12.7],
+    '3' : [2.08, 48.0],
+    '4' : [0.53, 189.3],
+    '5' : [0.13, 780.6],
+    '6' : [0.03, 3382.8],
+    '7' : [0.0065, 15464.1],
+    '8' : ['0.00133', 74941.3],
+    '9' : ['0.00026', 387196.5],
+    '10' : ['0.000047', 2147180.7]
+}
+
 def list_conversion(l):
     if isinstance(l, int):
         return l
