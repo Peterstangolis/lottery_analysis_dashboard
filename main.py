@@ -164,7 +164,6 @@ if check_password():
                                parse_dates=False,
                                index_col=0)
         df_group.index = pd.to_datetime(df_group.index, format="%y-%b %d %H:%M")
-        print(df_group)
         st.dataframe(df_group)
         fig5 = groupings_chart(d_groups=df_group)
         st.pyplot(fig5)
