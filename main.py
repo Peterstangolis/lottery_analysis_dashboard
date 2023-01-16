@@ -13,7 +13,8 @@ from number_tracking import number_tracker
 from number_tracker_table import number_track_table
 from keno_numbers_table import keno_table
 from random_number_generator import quick_picks
-
+from groupings_csv import groupings_to_csv
+from groupings_chart_matplotlib import groupings_chart
 
 import pandas as pd
 import streamlit as st
@@ -64,7 +65,9 @@ if check_password():
 
     df = load_data(data_url)
 
+    ## CSV file creation
     tens_csv(df)
+    groupings_to_csv(df=df)
 
 
     df2 = df[['Draw Date', 'Time of day', 'Numbers_2', 'Odds_vs_Evens', 'Over_Under_35', 'Repeated Numbers', \
@@ -155,6 +158,17 @@ if check_password():
                 st.plotly_chart(fig4)
             with col_y:
                 st.plotly_chart(fig3)
+
+    with tab2:
+        df_group = pd.read_csv('data/groupings_breakdown.csv',
+                               parse_dates=False,
+                               index_col=0)
+        df_group.index = pd.to_datetime(df_group.index, format="%y-%b %d %H:%M")
+        print(df_group)
+        st.dataframe(df_group)
+        fig5 = groupings_chart(d_groups=df_group)
+        st.pyplot(fig5)
+        #
 
 
     with st.sidebar:

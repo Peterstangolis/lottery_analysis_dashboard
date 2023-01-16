@@ -14,8 +14,8 @@ def keno_number_count(df):
                            edgecolor='darkgreen',
                            constrained_layout=True
                            )
-    fig.subplots_adjust(top=0.1,
-                        bottom=0.1)
+    # fig.subplots_adjust(top=0.1,
+    #                     bottom=0.1)
 
     #fig.suptitle("A Running Count Of How Often Each \nKeno # Has Been Picked")
 
