@@ -1,6 +1,3 @@
-import datetime
-
-import pytz
 
 ## Import the libraries
 from variables import data_url, numbers_url, keno_odds
@@ -18,6 +15,8 @@ from groupings_chart_matplotlib import groupings_chart
 
 import pandas as pd
 import streamlit as st
+import datetime
+import pytz
 
 def check_password():
     """Returns `True` if the user had the correct password."""
@@ -56,7 +55,6 @@ if check_password():
         initial_sidebar_state="expanded",
 
                        )
-
 
     ## Load dataset
     def load_data(url):
@@ -198,15 +196,29 @@ if check_password():
         with col_b:
             st.write(f"<mark style = 'font-family:liberation serif; font-size:17px; color:#F0B74D; background-color:transparent;'>{count_down_1}</mark>  {next_draw_time_1} " , unsafe_allow_html=True)
 
-        st.markdown("<br>", unsafe_allow_html=True)
+        #st.markdown("<br>", unsafe_allow_html=True)
         st.write("<hr>", unsafe_allow_html=True)
         st.markdown(f"<H5 style='color:#02A161; font-size:20px;'>  LAST DRAW </h5>",
                            unsafe_allow_html=True)
         st.write(last_draw_date_1)
-        last_numbers = last_drawn_numbers(df=df, col_name="Numbers_2")
+        last_numbers, last_numbers_int = last_drawn_numbers(df=df, col_name="Numbers_2")
         st.markdown("<H4 style='color:#F0B74D ; font-size: 16px;'> NUMBERS DRAWN (1-70) </h4",
                     unsafe_allow_html=True)
-        st.write(last_numbers)
+        #st.write(last_numbers)
+        colaa, colbb, colcc, coldd, colee, colff, colgg, colhh, colii, coljj = st.columns((1,1,1,1,1,1,1,1,1,1))
+        cols_1 = [ colaa, colbb, colcc, coldd, colee, colff, colgg, colhh, colii, coljj]
+        for e,c in enumerate(cols_1):
+            with c:
+                st.write(
+                    f"<p style = 'border-radius: 50%; width:30px; height:30px; padding:5px; background:#fff; border:2px solid #02A161; color:#02A161; text-align:center; font:bold 13px Arial, sans-serif;'> {last_numbers_int[e]} </p>",
+                    unsafe_allow_html=True)
+        colab, colac, colad, colae, colaf, colag, colah, colai, colaj, colak = st.columns((1,1,1,1,1,1,1,1,1,1))
+        cols_1 = [ colab, colac, colad, colae, colaf, colag, colah, colai, colaj, colak]
+        for e,c in enumerate(cols_1):
+            with c:
+                st.write(
+                    f"<p style = 'border-radius: 50%; width:30px; height:30px; padding:5px; background:#fff; border:2px solid #02A161; color:#02A161; text-align:center; font:bold 13px Arial, sans-serif;'> {last_numbers_int[e+10]} </p>",
+                    unsafe_allow_html=True)
 
         st.markdown("<H4 style='color:#F0B74D ; font-size: 16px;'> OTHER GAME STATS </h4",
                     unsafe_allow_html=True)
@@ -233,7 +245,7 @@ if check_password():
                       value=f"{over_under[0]}"
                       )
 
-        repeated_numbers = last_drawn_numbers(df=df, col_name="Repeated Numbers")
+        repeated_numbers, repeated_numbers_int = last_drawn_numbers(df=df, col_name="Repeated Numbers")
         three_x = last_three_draws(df=df, col_name="Numbers_2")
 
         col_d, col_e, col_f = st.columns((2,1,2))

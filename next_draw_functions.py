@@ -57,12 +57,35 @@ def time_until_next_draw(df):
 
     return next_draw_date, next_draw_time, countdown_to_draw, last_draw_date_format
 
+
+# Convert a string of digits in a list
+def list_conversion(l):
+    if isinstance(l, int):
+        return l
+    else:
+        new_list = []
+        l2 = l.split(',')
+        for item in l2:
+            i = item.replace('[','').replace(']','').strip()
+            if not i:
+                i = i
+            else:
+                try:
+                    i = int(i)
+                except:
+                    i = float(i)
+            new_list.append(i)
+        return new_list
+
+
+
 # Return the last draws numbers
 def last_drawn_numbers(df, col_name):
 
     last_row = df.iloc[len(df)-1][col_name]
+    last_row_nums = list_conversion(last_row)
 
-    return last_row
+    return last_row, last_row_nums
 
 def last_three_draws(df, col_name):
 
