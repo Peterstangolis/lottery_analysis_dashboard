@@ -168,12 +168,7 @@ if check_password():
 
 
     with st.sidebar:
-        #col_q, col_r, col_s = st.columns((1, 0.5,1))
-        #with col_q:
         st.image('images/ca-keno-2x-png.png', width=170)
-        #with col_r:
-            #st.write("")
-        #with col_s:
         st.markdown("<br>", unsafe_allow_html=True)
         st.write(f"<H5 style='color:#F0B74D; font-size:14px;'> {datetime.datetime.now(tz=pytz.timezone('EST')).strftime('%A %B %#d, %Y %I:%M%p %Z')} </h5>",
                      unsafe_allow_html=True)
@@ -227,23 +222,21 @@ if check_password():
         with col1:
             o_e = odds_and_evens(df, "Odds_vs_Evens")
 
-            st.metric(label="ODD #'s",
-                      value=f'{o_e[0]}')
-            st.metric(label="EVEN #'s",
-                      value=f'{o_e[1]}')
+            st.markdown("ODD #'s")
+            st.markdown(f"<p style='font-size:45px;color:#F0B74D; '>{o_e[0]} </p>", unsafe_allow_html=True)
+            st.markdown("EVEN #'s")
+            st.markdown(f"<p style='font-size:45px;color:#F0B74D;'>{o_e[1]} </p>", unsafe_allow_html=True)
 
         with col2:
-            st.markdown("<p style='border-left:3px solid #02A161; height:130px; marginTop:10px;'> </p>",
+            st.markdown("<p style='border-left:3px solid #02A161; height:170px; marginTop:40px;'> </p>",
                         unsafe_allow_html=True)
 
         with col3:
             over_under = over_under_35(df=df, col_name="Over_Under_35")
-            st.metric(label="1-34",
-                      value=f"{over_under[1]}"
-                      )
-            st.metric(label="35-70",
-                      value=f"{over_under[0]}"
-                      )
+            st.markdown("1 - 34")
+            st.markdown(f"<p style='font-size:45px;color:#F0B74D;'>{over_under[1]}</p>", unsafe_allow_html=True)
+            st.markdown("35 - 70")
+            st.markdown(f"<p style='font-size:45px;color:#F0B74D;'>{over_under[0]}</p>", unsafe_allow_html=True)
 
         repeated_numbers, repeated_numbers_int = last_drawn_numbers(df=df, col_name="Repeated Numbers")
         three_x = last_three_draws(df=df, col_name="Numbers_2")
