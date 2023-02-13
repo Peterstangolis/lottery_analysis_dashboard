@@ -241,18 +241,28 @@ if check_password():
         repeated_numbers, repeated_numbers_int = last_drawn_numbers(df=df, col_name="Repeated Numbers")
         three_x = last_three_draws(df=df, col_name="Numbers_2")
 
-        col_d, col_e, col_f = st.columns((2,1,2))
-        with col_d:
-            st.markdown("REPEATED (2x)")
-            st.write(repeated_numbers)
+        st.markdown("<p style='font-size:22px;color:#F0AE35;text-align:center; '>REPEATED #'s </p>", unsafe_allow_html=True)
+        st.markdown("MINIMUM 2 DRAWS IN A ROW")
+        col_names = [f"col_P{i}" for i in range(len(repeated_numbers_int))]
+        col_num = [1 for i in range(len(repeated_numbers_int))]
+        col_names = st.columns((col_num))
+        for e, n in enumerate(col_names):
+            with col_names[e]:
+                st.write(
+                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#fff; border:3px solid #F0B74D; color:#F0B74D;"
+                    f" text-align:center; font:bold 15px Arial, sans-serif;'> {repeated_numbers_int[e]} </p>",
+                    unsafe_allow_html=True)
 
-        with col_e:
-            st.markdown("<p style='border-left:3px solid #02A161; height:60px; marginTop:5px;'> </p>",
-                        unsafe_allow_html=True)
-
-        with col_f:
-            st.markdown("REPEATED (3x)")
-            st.write(f"{list(three_x)}")
+        st.markdown("MINIMUM 3 DRAWS IN A ROW")
+        col_names2 = [f"col_Q{i}" for i in range(len(three_x))]
+        col_num2 = [1 for i in range(len(three_x))]
+        col_names2 = st.columns((col_num2))
+        for e, n in enumerate(col_names2):
+            with col_names2[e]:
+                st.write(
+                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#fff; border:3px solid #F0AE35; color:#F0AE35;"
+                    f" text-align:center; font:bold 15px Arial, sans-serif;'> {three_x[e]} </p>",
+                    unsafe_allow_html=True)
 
 
 
