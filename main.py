@@ -113,7 +113,6 @@ if check_password():
     tab1, tab2 = st.tabs(["📊 View KENO Game Statistics & Charts ", "🎰 Quick Pick & Odds Generator"])
 
     with tab1:
-        #st.markdown("---", unsafe_allow_html=True)
 
         col9, col10 = st.columns((1,3), gap="medium")
         with col9:
@@ -123,7 +122,7 @@ if check_password():
                               names=colnames
                               )
             fig2 = keno_number_count(df=df5)
-            st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'>TRACKING HOW OFTEN EACH <br> KENO NUMBER HAS BEEN DRAWN </h4",
+            st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'>TRACKING EACH KENO NUMBER</h4",
                         unsafe_allow_html=True)
             st.pyplot(fig2)
 
