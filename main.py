@@ -136,12 +136,20 @@ if check_password():
                         unsafe_allow_html=True)
             st.pyplot(fig=fig)
 
-            st.markdown(
-                f"<H4 style='color:#F0B74D ; font-size: 26px;'> DATAFRAME DOCUMENTING <mark style = 'font-family:liberation serif; font-size:27px; color:#02A161; background-color:transparent;'> KENO </MARK> GAME STATS OVER THE LAST {len(df)} DRAWS </h4>",
-                unsafe_allow_html=True)
-            #st.write(f"Dataframe Documenting KENO GAME STATS Over The Last {len(df)} DRAWS")
-            with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
-                st.dataframe(df2)
+            st.markdown("<H4 style='color:#F0B74D ; font-size: 26px;'> LOW-MID-HIGH NUMBERS GROUPINGS </h4",
+                        unsafe_allow_html=True)
+            df_group = pd.read_csv('data/groupings_breakdown.csv',
+                                   parse_dates=False,
+                                   index_col=0)
+            df_group.index = pd.to_datetime(df_group.index, format="%y-%b %d %H:%M")
+            fig5 = groupings_chart(d_groups=df_group)
+            st.pyplot(fig5)
+
+        st.markdown(
+            f"<H4 style='color:#F0B74D ; font-size: 26px;'> DATAFRAME DOCUMENTING <mark style = 'font-family:liberation serif; font-size:27px; color:#02A161; background-color:transparent;'> KENO </MARK> GAME STATS OVER THE LAST {len(df)} DRAWS </h4>",
+            unsafe_allow_html=True)
+        with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
+            st.dataframe(df2)
 
         st.markdown(
             f"<H4 style='color:#F0B74D ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
@@ -163,7 +171,7 @@ if check_password():
         df_group.index = pd.to_datetime(df_group.index, format="%y-%b %d %H:%M")
         fig5 = groupings_chart(d_groups=df_group)
         st.pyplot(fig5)
-        #
+
 
 
     with st.sidebar:

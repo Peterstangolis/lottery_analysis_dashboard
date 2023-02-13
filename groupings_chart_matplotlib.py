@@ -19,18 +19,17 @@ def groupings_chart(d_groups):
     fig, axs = plt.subplots(4 ,2, figsize=(11, 4.5),
                             constrained_layout=True,
                             sharex=True, sharey=False,
-                            edgecolor='black',
+                            edgecolor='darkgreen',
                             linewidth=5,
                             facecolor='lightyellow')
 
-    fig.suptitle("GROUPING NUMBERS DRAWN INTO LOW - MID - HIGH GROUPS")
 
 
     for n, p in enumerate(axs):
 
         axs[n,0].plot(d_groups.index, d_groups[str(n)], colors[n])
         axs[n,0].set_title(titles[n], loc='left', y=.82, x=0.02,
-                            fontsize='medium',
+                            fontsize='small',
                             weight='bold',
                             color=colors[n])
         # axs[n,0].grid(True)
@@ -48,7 +47,7 @@ def groupings_chart(d_groups):
         ## Second Column of Plots Settings
         axs[n, 1].plot(d_groups.index, d_groups[str(n + 4)], colors[n + 4])
         axs[n, 1].set_title(titles[n + 4], loc='left', y=.85, x=0.02,
-                            fontsize='medium',
+                            fontsize='small',
                             weight='bold',
                             color=colors[n + 4])
         if n + 4 != 7:
