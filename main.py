@@ -151,6 +151,8 @@ if check_password():
         with st.expander(label="🖱️ CLICK TO VIEW TABLE "):
             st.dataframe(df2)
 
+
+    with tab2:
         st.markdown(
             f"<H4 style='color:#F0B74D ; font-size: 26px;'> A Table Tracking When Each Number Has Been Drawn Over The Past 20 DRAWS </h4>",
             unsafe_allow_html=True)
@@ -163,14 +165,6 @@ if check_password():
                 st.plotly_chart(fig4)
             with col_y:
                 st.plotly_chart(fig3)
-
-    with tab2:
-        df_group = pd.read_csv('data/groupings_breakdown.csv',
-                               parse_dates=False,
-                               index_col=0)
-        df_group.index = pd.to_datetime(df_group.index, format="%y-%b %d %H:%M")
-        fig5 = groupings_chart(d_groups=df_group)
-        st.pyplot(fig5)
 
 
 
