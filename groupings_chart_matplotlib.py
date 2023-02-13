@@ -50,6 +50,7 @@ def groupings_chart(d_groups):
                             fontsize='small',
                             weight='bold',
                             color=colors[n + 4])
+        axs[n, 1].set_ylim([0, 7])
         if n + 4 != 7:
             axs[n, 1].yaxis.set_major_locator(ticker.MultipleLocator(tick_spacing_y))
         axs[n, 1].tick_params(axis='y', colors=colors[n + 4])
