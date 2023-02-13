@@ -14,6 +14,7 @@ def tens_charts(df):
               '#543C05', '#A17512', '#06136B', '#A11C02']
     titles = ['0-9', '10-19', '20-29', '30-39',
               '40-49', '50-59', '60-69', '70']
+    df = df.tail(40)
     cols = df.columns
     tick_spacing_x = 1
     tick_spacing_y = 2

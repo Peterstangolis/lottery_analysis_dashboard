@@ -10,6 +10,7 @@ def groupings_chart(d_groups):
     colors = ['#540E00', '#095436', '#02A161', '#5d5b5c',
               '#543C05',  '#A17512', '#06136B', '#A11C02' ]
 
+    d_groups = d_groups.tail(40)
     titles = list(numbers_breakdown.keys())
     cols = d_groups.columns
     tick_spacing_x = 1

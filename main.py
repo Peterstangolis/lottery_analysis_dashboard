@@ -249,8 +249,8 @@ if check_password():
         for e, n in enumerate(col_names):
             with col_names[e]:
                 st.write(
-                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#fff; border:3px solid #F0B74D; color:#F0B74D;"
-                    f" text-align:center; font:bold 15px Arial, sans-serif;'> {repeated_numbers_int[e]} </p>",
+                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#f2f2f2; border:3px solid #B07A15; color:#B07A15;"
+                    f" text-align:center; font:bold 16px Arial, sans-serif;'> {repeated_numbers_int[e]} </p>",
                     unsafe_allow_html=True)
 
         st.markdown("MINIMUM 3 DRAWS IN A ROW")
@@ -260,8 +260,8 @@ if check_password():
         for e, n in enumerate(col_names2):
             with col_names2[e]:
                 st.write(
-                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#fff; border:3px solid #F0AE35; color:#F0AE35;"
-                    f" text-align:center; font:bold 15px Arial, sans-serif;'> {three_x[e]} </p>",
+                    f"<p style = 'border-radius: 50%; width:45px; height:45px; padding:10px; background:#fff; border:3.6px solid #B07A15; color:#B07A15;"
+                    f" text-align:center; font:bold 16px Arial, sans-serif;'> {three_x[e]} </p>",
                     unsafe_allow_html=True)
 
 
